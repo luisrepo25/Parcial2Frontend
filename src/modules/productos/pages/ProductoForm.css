@@ -1,0 +1,56 @@
+/* Estilos mínimos para ProductoForm - La mayoría heredados de components.css */
+
+.producto-form-page {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.producto-form-page .form-group label {
+  color: #1e293b !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.producto-form-page .required {
+  color: #ef4444;
+}
+
+.producto-form-page input,
+.producto-form-page textarea,
+.producto-form-page select {
+  color: #1e293b !important;
+  font-weight: 500;
+}
+
+.producto-form-page input::placeholder,
+.producto-form-page textarea::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400;
+}
+
+.producto-form-page select option {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
