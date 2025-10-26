@@ -6,7 +6,7 @@ const Error404 = () => {
   return (
     <div className="error404-container">
       <h1>404 - Página no encontrada</h1>
-      <p>Lo sentimos, la página que buscas no existe.</p>
+      <p>Lo sentimos, la página que buscas no existe uwu.</p>
       <Link to="/">Volver a la página de inicio</Link>
     </div>
   );
