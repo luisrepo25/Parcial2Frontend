@@ -1,10 +1,8 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./MainLayout.css";
 import {
   FaTachometerAlt, // Dashboard
   FaBoxOpen, // Productos
-  FaUsers, // Clientes
   FaCashRegister, // Ventas
   FaClipboardList, // Inventario
   FaUser, // Usuarios
@@ -38,16 +36,19 @@ const MainLayout = () => {
   };
 
   const menuItems = [
-    { path: "/", label: "Dashboard", icon: <FaTachometerAlt /> },
-    { path: "/categorias", label: "Categorías", icon: <FaTags /> },
-    { path: "/marcas", label: "Marcas", icon: <FaTrademark /> },
-    { path: "/garantias", label: "Garantías", icon: <FaShieldAlt /> },
-    { path: "/productos", label: "Productos", icon: <FaBoxOpen /> },
-    { path: "/clientes", label: "Clientes", icon: <FaUsers /> },
-    { path: "/ventas", label: "Ventas", icon: <FaCashRegister /> },
-    { path: "/inventario", label: "Inventario", icon: <FaClipboardList /> },
-    { path: "/usuarios", label: "Usuarios", icon: <FaUser /> },
-    { path: "/reportes", label: "Reportes", icon: <FaChartLine /> },
+    { path: "/admin/dashboard", label: "Dashboard", icon: <FaTachometerAlt /> },
+    { path: "/admin/categorias", label: "Categorías", icon: <FaTags /> },
+    { path: "/admin/marcas", label: "Marcas", icon: <FaTrademark /> },
+    { path: "/admin/garantias", label: "Garantías", icon: <FaShieldAlt /> },
+    { path: "/admin/productos", label: "Productos", icon: <FaBoxOpen /> },
+    { path: "/admin/ventas", label: "Ventas", icon: <FaCashRegister /> },
+    {
+      path: "/admin/inventario",
+      label: "Inventario",
+      icon: <FaClipboardList />,
+    },
+    { path: "/admin/usuarios", label: "Usuarios", icon: <FaUser /> },
+    { path: "/admin/reportes", label: "Reportes", icon: <FaChartLine /> },
   ];
 
   const isActive = (path: string) => {

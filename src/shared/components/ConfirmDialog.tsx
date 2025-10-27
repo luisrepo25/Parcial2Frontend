@@ -1,5 +1,4 @@
 import { FaExclamationTriangle, FaTimes } from "react-icons/fa";
-import "./ConfirmDialog.css";
 
 interface ConfirmDialogProps {
   title: string;

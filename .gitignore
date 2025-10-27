@@ -6,12 +6,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+# Ignorar el .env
 .env
-
 node_modules
 dist
 dist-ssr
 *.local
+EstilosForm.md
 
 # Editor directories and files
 .vscode/*

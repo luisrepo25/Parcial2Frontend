@@ -1,6 +1,5 @@
 // Pagina para mostrar el error 404 - Página no encontrada o ruta invalida
 import { Link } from "react-router-dom";
-import "./error404.css";
 
 const Error404 = () => {
   return (

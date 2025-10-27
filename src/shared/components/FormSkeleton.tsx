@@ -1,6 +1,5 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import "./FormSkeleton.css";
 
 const FormSkeleton = () => {
   return (

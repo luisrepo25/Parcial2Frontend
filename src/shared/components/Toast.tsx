@@ -5,7 +5,6 @@ import {
   FaInfoCircle,
   FaTimes,
 } from "react-icons/fa";
-import "./Toast.css";
 
 export type ToastType = "success" | "error" | "info" | "warning";
 

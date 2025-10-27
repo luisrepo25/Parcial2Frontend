@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authApi } from "../services/authapi";
 import type { LoginCredentials } from "../types";
-import "./Login.css";
 
 import {
   FaEnvelope,

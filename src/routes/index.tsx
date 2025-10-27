@@ -1,20 +1,11 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import Dashboard from "../pages/Dashboard";
-import Error404 from "../pages/error404";
+import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "../shared/components/ProtectedRoute";
 import Login from "../modules/auth/pages/Login";
-import categoriasRoutes from "../modules/categoria/routes";
-import marcasRoutes from "../modules/Marca/routes";
-import garantiasRoutes from "../modules/garantia/routes";
-import productosRoutes from "../modules/productos/routes";
-
-// Importa aquí las rutas de cada módulo cuando las crees
-// import clientesRoutes from '../modules/clientes/routes';
-// import ventasRoutes from '../modules/ventas/routes';
-// import inventarioRoutes from '../modules/inventario/routes';
-// import usuariosRoutes from '../modules/usuarios/routes';
-// import reportesRoutes from '../modules/reportes/routes';
+import Error404 from "../pages/error404";
+import Unauthorized from "../pages/Unauthorized";
+import { adminRoutes } from "./adminRoutes";
+import { clienteRoutes } from "./clienteRoutes";
+import RoleBasedRedirect from "./RoleBasedRedirect";
 
 export const router = createBrowserRouter([
   {
@@ -22,42 +13,25 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: "/unauthorized",
+    element: <Unauthorized />,
+  },
+  // Rutas del administrador
+  adminRoutes,
+
+  // Rutas del cliente/tienda
+  clienteRoutes,
+
+  {
     path: "/",
     element: (
       <ProtectedRoute>
-        <MainLayout />
+        <RoleBasedRedirect />
       </ProtectedRoute>
     ),
-    children: [
-      {
-        index: true,
-        element: <Dashboard />,
-      },
-      {
-        path: "categorias/*",
-        children: categoriasRoutes,
-      },
-      {
-        path: "marcas/*",
-        children: marcasRoutes,
-      },
-      {
-        path: "garantias/*",
-        children: garantiasRoutes,
-      },
-      {
-        path: "productos/*",
-        children: productosRoutes,
-      },
-      // Descomenta y usa estas líneas cuando crees las rutas de cada módulo
-      {
-        path: "*",
-        element: <Error404 />,
-      },
-    ],
   },
   {
     path: "*",
-    element: <Navigate to="/" replace />,
+    element: <Error404 />,
   },
 ]);
