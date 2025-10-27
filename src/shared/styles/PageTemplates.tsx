@@ -25,7 +25,7 @@ interface MiEntidad {
 }
 
 export const MiEntidadList: React.FC = () => {
-  const [items, setItems] = useState<MiEntidad[]>([]);
+  const [items] = useState<MiEntidad[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
