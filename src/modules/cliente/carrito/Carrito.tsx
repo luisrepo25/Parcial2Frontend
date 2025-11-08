@@ -8,13 +8,26 @@ import {
 } from "react-icons/fa";
 import { useCarrito } from "../../../shared/contexts/CarritoContext";
 import { Link } from "react-router-dom";
+import { useVentas } from "../ventas/hooks/useVentas";
 
 const Carrito = () => {
   const { items, removeFromCart, updateQuantity, getTotalPrice } = useCarrito();
+  const { loading, error, crearCheckout } = useVentas();
 
   const formatPrice = (price: number | string) => {
     const numPrice = typeof price === "string" ? parseFloat(price) : price;
     return `$${numPrice.toFixed(2)}`;
+  };
+
+  const handleProcederPago = async () => {
+    // Convertir items del carrito al formato que espera la API
+    const checkoutItems = items.map((item) => ({
+      producto_id: item.producto.id,
+      cantidad: item.cantidad,
+    }));
+
+    // Crear checkout y redirigir a Stripe
+    await crearCheckout(checkoutItems);
   };
 
   if (items.length === 0) {
@@ -151,14 +164,24 @@ const Carrito = () => {
             </div>
           </div>
 
-          <button className="btn-checkout" disabled>
+          {error && (
+            <div className="alert alert-danger mb-3">
+              <FaTrash /> {error}
+            </div>
+          )}
+
+          <button
+            className="btn-checkout"
+            onClick={handleProcederPago}
+            disabled={loading || items.length === 0}
+          >
             <FaShoppingCart />
-            <span>Proceder al Pago</span>
+            <span>
+              {loading ? "Procesando..." : "Proceder al Pago con Stripe"}
+            </span>
           </button>
 
-          <p className="checkout-note">
-            * La función de compra estará disponible próximamente
-          </p>
+          <p className="checkout-note">Pago seguro procesado por Stripe</p>
         </div>
       </div>
     </div>

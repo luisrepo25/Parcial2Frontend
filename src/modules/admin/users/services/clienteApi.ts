@@ -3,9 +3,8 @@ import type { Cliente, ClienteFormData } from "../types";
 import { authApi } from "../../../auth/services/authapi";
 
 // Obtener la URL base de la API desde las variables de entorno
-const API_URL =
-  import.meta.env.VITE_API_URL + "users/clientes" ||
-  "http://127.0.0.1:8000/users/clientes";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/";
+const API_URL = `${API_BASE_URL}users/clientes`;
 
 /**
  * Respuesta de la API para cliente con estructura nested
