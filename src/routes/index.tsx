@@ -6,6 +6,8 @@ import Unauthorized from "../pages/Unauthorized";
 import { adminRoutes } from "./adminRoutes";
 import { clienteRoutes } from "./clienteRoutes";
 import RoleBasedRedirect from "./RoleBasedRedirect";
+import CheckoutSuccess from "../modules/cliente/checkout-success/CheckoutSuccess";
+import VerificarPago from "../modules/cliente/verificar-pago/VerificarPago";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +17,15 @@ export const router = createBrowserRouter([
   {
     path: "/unauthorized",
     element: <Unauthorized />,
+  },
+  // Rutas públicas de Stripe (sin autenticación requerida)
+  {
+    path: "/checkout/success",
+    element: <CheckoutSuccess />,
+  },
+  {
+    path: "/checkout/verify",
+    element: <VerificarPago />,
   },
   // Rutas del administrador
   adminRoutes,
