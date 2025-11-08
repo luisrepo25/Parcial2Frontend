@@ -24,25 +24,32 @@ const CheckoutSuccess = () => {
   const sessionId = searchParams.get("session_id");
 
   const verificarPago = useCallback(async () => {
+    console.log("🔍 Session ID recibido:", sessionId);
+
     if (!sessionId) {
+      console.error("❌ No se encontró session_id en la URL");
       setEstado("error");
       return;
     }
 
     try {
+      console.log("📡 Llamando a verificarSesion con:", sessionId);
       const result = await verificarSesion(sessionId);
+      console.log("📥 Respuesta de verificarSesion:", result);
 
       if (result?.ok && result.nota_venta?.estado === "pagada") {
+        console.log("✅ Pago verificado exitosamente");
         setEstado("exitoso");
         setOrdenId(result.nota_venta.id);
         setTotal(result.nota_venta.total);
         // Limpiar el carrito solo si el pago fue exitoso
         clearCart();
       } else {
+        console.error("❌ Pago no verificado o error en respuesta:", result);
         setEstado("error");
       }
     } catch (error) {
-      console.error("Error al verificar pago:", error);
+      console.error("❌ Error al verificar pago:", error);
       setEstado("error");
     }
   }, [sessionId, verificarSesion, clearCart]);

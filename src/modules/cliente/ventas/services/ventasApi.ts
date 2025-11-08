@@ -66,18 +66,25 @@ export const ventasApi = {
   verifySession: async (sessionId: string): Promise<VerifySessionResponse> => {
     try {
       const token = authApi.getToken();
+      console.log("🔑 Token presente:", !!token);
+
       if (!token) {
         throw new Error("No hay token de autenticación");
       }
 
-      const response = await fetch(`${API_URL}/checkout/verify/${sessionId}/`, {
+      const url = `${API_URL}/checkout/verify/${sessionId}/`;
+      console.log("🌐 URL de verificación:", url);
+
+      const response = await fetch(url, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
+      console.log("📡 Status de respuesta:", response.status);
       const result = await response.json();
+      console.log("📦 Resultado del backend:", result);
 
       if (!response.ok) {
         return {
@@ -88,7 +95,7 @@ export const ventasApi = {
 
       return result;
     } catch (error) {
-      console.error("Error en verifySession:", error);
+      console.error("❌ Error en verifySession:", error);
       return {
         ok: false,
         error:

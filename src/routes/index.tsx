@@ -24,7 +24,15 @@ export const router = createBrowserRouter([
     element: <CheckoutSuccess />,
   },
   {
+    path: "/tienda/checkout/success",
+    element: <CheckoutSuccess />,
+  },
+  {
     path: "/checkout/verify",
+    element: <VerificarPago />,
+  },
+  {
+    path: "/tienda/checkout/verify",
     element: <VerificarPago />,
   },
   // Rutas del administrador
