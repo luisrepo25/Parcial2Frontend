@@ -1487,6 +1487,31 @@
   animation: successIconPulse 2s ease-in-out infinite;
 }
 
+.success-icon.verificando {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+  animation: none;
+}
+
+.success-icon.verificando .spin {
+  animation: spin 1s linear infinite;
+}
+
+.success-icon.error {
+  background: linear-gradient(135deg, var(--danger-600), var(--danger-500));
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+  animation: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes successIconPulse {
   0%,
   100% {
