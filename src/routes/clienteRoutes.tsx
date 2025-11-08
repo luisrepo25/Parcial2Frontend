@@ -7,8 +7,6 @@ import Catalogo from "../modules/cliente/catalogo/Catalogo";
 import Carrito from "../modules/cliente/carrito/Carrito";
 import Ordenes from "../modules/cliente/ordenes/Ordenes";
 import Perfil from "../modules/cliente/perfil/Perfil";
-import CheckoutSuccess from "../modules/cliente/checkout-success/CheckoutSuccess";
-import VerificarPago from "../modules/cliente/verificar-pago/VerificarPago";
 
 export const clienteRoutes: RouteObject = {
   path: "/tienda",
@@ -22,7 +20,5 @@ export const clienteRoutes: RouteObject = {
     { path: "carrito", element: <Carrito /> },
     { path: "ordenes", element: <Ordenes /> },
     { path: "perfil", element: <Perfil /> },
-    { path: "checkout/success", element: <CheckoutSuccess /> },
-    { path: "verificar-pago", element: <VerificarPago /> },
   ],
 };
